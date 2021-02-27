@@ -63,7 +63,7 @@ def drawGameState(screen, gs):
 Draws the squares on the board
 '''
 def drawSquares(screen):
-    colors = [pygame.Color("white"), pygame.Color("grey")]
+    colors = [pygame.Color(240, 240, 240), pygame.Color(50, 50, 50)]
     for r in range(DIMENSION):
         for c in range(DIMENSION):
             color = colors[((r+c) % 2)]
@@ -73,7 +73,12 @@ def drawSquares(screen):
 Draws the pieces on the board
 '''
 def drawPieces(screen, board):
-    pass
+    for row in range(DIMENSION):
+        for column in range(DIMENSION):
+            piece = board[row][column]
+
+            if piece != "--":
+                screen.blit(IMAGES[piece], pygame.Rect(column * SQ_SIZE, row * SQ_SIZE, SQ_SIZE, SQ_SIZE))
 
 if __name__ == "__main__":
     main()
